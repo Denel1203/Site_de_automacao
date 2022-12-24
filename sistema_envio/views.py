@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from .forms import EnviarForm
-from .models import Envio
+from django.core.mail import EmailMessage
 
 
 
