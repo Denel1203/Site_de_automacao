@@ -1,6 +1,10 @@
 from django.forms import ModelForm
 from .models import Envio
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+
+
 
 class EnviarForm(ModelForm):
     class Meta:
@@ -14,7 +18,10 @@ class EnviarForm(ModelForm):
         Message = self.cleaned_data['Message']
         type = self.cleaned_data['type']
 
-        mail = EmailMessage(
+        html_content = render_to_string('sistema_envio/mos.html', locals())
+        text_content = strip_tags(html_content)
+
+        mail = EmailMultiAlternatives(
             subject = type,
             from_email = '',
             to = [Email,],
@@ -23,4 +30,8 @@ class EnviarForm(ModelForm):
                 'Replsy-To' : ''
             }
         )
+        mail.attach_alternative(html_content, 'text/html')
         mail.send()
+
+
+

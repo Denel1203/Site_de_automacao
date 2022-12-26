@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Título da página</title>
+    <meta charset="utf-8">
+    <style>
+        h3{
+            color: red;
+        }
+    </style>
+
+  </head>
+  <body>
+    {% if type == "BOLETOS" %}
+    <h3>Boa noite {{Name}}</h3>
+    <p>“Sua fatura vence hoje. Para te ajudar, estamos mandando o boleto em anexo e o código de barras pelo e-mail, ok? Qualquer coisa, não hesite em nos chamar.”</p>
+    {% endif %}
+
+    {% if type == "NOTICIAS" %}
+    <h3>Boa noite {{Name}}</h3>
+    <p>“Agradecemos por comprar os nossos produtos! Lembre-se de que estamos aqui para responder a quaisquer perguntas que você tenha ao usá-los: basta enviar uma mensagem por esse canal;”</p>
+    {% endif %}
+
+    {% if type == "CONSULTAS" %}
+    <h3>Boa noite {{Name}}</h3>
+    <p>“Caro paciente, gostaríamos de lembrar a você que sua consulta agendada é amanhã às 9 horas . Responda 1 caso não possa comparecer.”</p>
+    {% endif %}
+
+    {% if type == "EXAMES" %}
+    <h3>Boa noite {{Name}}</h3>
+    <p>“Caro paciente, sua consulta odontológica foi agendada para dia 07/02 às 8 horas.” “{{Name}}, seu agendamento para o dia 08/01 no Consultório Comtele foi realizado com sucesso!</p>
+    {% endif %}
+</body>
+</html>

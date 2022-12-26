@@ -3,4 +3,5 @@ from .import views
 
 urlpatterns = [
     path('enviar/', views.enviar),
+    path('', views.mostrar),
 ]
